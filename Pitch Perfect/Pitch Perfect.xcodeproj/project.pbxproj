@@ -12,6 +12,7 @@
 		31409C371C2CA27F00F71F39 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31409C351C2CA27F00F71F39 /* Main.storyboard */; };
 		31409C391C2CA27F00F71F39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31409C381C2CA27F00F71F39 /* Assets.xcassets */; };
 		31409C3C1C2CA27F00F71F39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31409C3A1C2CA27F00F71F39 /* LaunchScreen.storyboard */; };
+		31409C441C2CEB8600F71F39 /* PlaySoundsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31409C431C2CEB8600F71F39 /* PlaySoundsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		31409C381C2CA27F00F71F39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		31409C3B1C2CA27F00F71F39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		31409C3D1C2CA27F00F71F39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		31409C431C2CEB8600F71F39 /* PlaySoundsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaySoundsController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				31409C381C2CA27F00F71F39 /* Assets.xcassets */,
 				31409C3A1C2CA27F00F71F39 /* LaunchScreen.storyboard */,
 				31409C3D1C2CA27F00F71F39 /* Info.plist */,
+				31409C431C2CEB8600F71F39 /* PlaySoundsController.swift */,
 			);
 			path = "Pitch Perfect";
 			sourceTree = "<group>";
@@ -137,6 +140,7 @@
 			files = (
 				31409C341C2CA27F00F71F39 /* RecordSoundViewController.swift in Sources */,
 				31409C321C2CA27F00F71F39 /* AppDelegate.swift in Sources */,
+				31409C441C2CEB8600F71F39 /* PlaySoundsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +290,7 @@
 				31409C421C2CA27F00F71F39 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
