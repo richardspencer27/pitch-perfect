@@ -25,11 +25,15 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap the Microphone to Record" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EU7-w9-e0r">
-                                <rect key="frame" x="184.5" y="408" width="231.5" height="20.5"/>
+                                <rect key="frame" x="184" y="408" width="231.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nqg-ii-VuC">
+                                <rect key="frame" x="250" y="465" width="100" height="100"/>
+                                <state key="normal" image="stop2x-iphone"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.40722639518049886" green="0.4950365619515803" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -37,6 +41,8 @@
                             <constraint firstItem="EU7-w9-e0r" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JyE-cc-17o"/>
                             <constraint firstItem="3Dz-dF-KX1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Pvv-8P-AJY"/>
                             <constraint firstItem="3Dz-dF-KX1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cv6-vd-EL1"/>
+                            <constraint firstItem="nqg-ii-VuC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lwo-Us-dWb"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="nqg-ii-VuC" secondAttribute="bottom" constant="35" id="v2g-QR-Y1t"/>
                         </constraints>
                     </view>
                     <connections>
@@ -51,5 +57,6 @@
     </scenes>
     <resources>
         <image name="microphone" width="200" height="200"/>
+        <image name="stop2x-iphone" width="100" height="100"/>
     </resources>
 </document>
