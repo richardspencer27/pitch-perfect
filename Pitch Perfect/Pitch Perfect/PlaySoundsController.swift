@@ -20,6 +20,7 @@ class PlaySoundsController: UIViewController {
         super.viewDidLoad()
         audioEngine = AVAudioEngine()
         audioPlayer = try! AVAudioPlayer(contentsOfURL: receivedAudio.recordingFilePath)
+        audioFile = try! AVAudioFile(forReading: receivedAudio.recordingFilePath)
         audioPlayer.enableRate = true
     }
 
@@ -37,12 +38,23 @@ class PlaySoundsController: UIViewController {
     }
     
     
+    @IBAction func playChipmunkAudio(sender: UIButton) {
+        playAudioWithVariablePitch(1000)
+    }
+    
+    @IBAction func playDarthVaderAudio(sender: UIButton) {
+        playAudioWithVariablePitch(-1000)
+    }
+    
+    
+    
     func playAudioWithVariableRate(rate: Float) {
         audioPlayer.stop()
         audioPlayer.currentTime = 0
         audioPlayer.rate = rate
         audioPlayer.volume = 1.0
         audioPlayer.volume = 1.0
+
         audioPlayer.play()
     }
     //TODO:  In playChipmunkAudio
