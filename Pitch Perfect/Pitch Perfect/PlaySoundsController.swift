@@ -46,6 +46,11 @@ class PlaySoundsController: UIViewController {
         playAudioWithVariablePitch(-1000)
     }
     
+    @IBAction func playReverb(sender: UIButton) {
+        playAudioWithVReverb()
+    }
+    
+    
     
     
     func playAudioWithVariableRate(rate: Float) {
@@ -57,10 +62,7 @@ class PlaySoundsController: UIViewController {
 
         audioPlayer.play()
     }
-    //TODO:  In playChipmunkAudio
-    //playAudioWithVariablePitch(1000)
-    
-    //New Function
+
     func playAudioWithVariablePitch(pitch: Float){
         audioPlayer.stop()
         audioEngine.stop()
@@ -75,6 +77,28 @@ class PlaySoundsController: UIViewController {
         
         audioEngine.connect(audioPlayerNode, to: changePitchEffect, format: nil)
         audioEngine.connect(changePitchEffect, to: audioEngine.outputNode, format: nil)
+        
+        audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
+        try! audioEngine.start()
+        
+        audioPlayerNode.play()
+    }
+    
+    func playAudioWithVReverb(){
+        audioPlayer.stop()
+        audioEngine.stop()
+        audioEngine.reset()
+        
+        let audioPlayerNode = AVAudioPlayerNode()
+        audioEngine.attachNode(audioPlayerNode)
+        let unitReverb = AVAudioUnitReverb()
+        
+        //audioEngine.attachNode(audioPlayerNode)
+        audioEngine.attachNode(unitReverb)
+        
+        let format = unitReverb.inputFormatForBus(0)
+        audioEngine.connect(audioPlayerNode, to: unitReverb, format: format)
+        audioEngine.connect(unitReverb, to: audioEngine.outputNode, format: format)
         
         audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
         try! audioEngine.start()
