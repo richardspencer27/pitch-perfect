@@ -18,6 +18,7 @@ class RecordSoundViewController: UIViewController , AVAudioRecorderDelegate{
     
     var audioRecorder:AVAudioRecorder!
     var recordedAudio: RecordedAudio!
+    let session = AVAudioSession.sharedInstance()
     let startRecordingStatus = "Tap the Microphone to Record"
     let recordingStatus = "Recording"
     
@@ -32,7 +33,7 @@ class RecordSoundViewController: UIViewController , AVAudioRecorderDelegate{
         let pathArray = [dirPath, fileName]
         let filePath = NSURL.fileURLWithPathComponents(pathArray)
         
-        let session = AVAudioSession.sharedInstance()
+        
         try! session.setCategory(AVAudioSessionCategoryPlayAndRecord)
         
         try! audioRecorder = AVAudioRecorder(URL: filePath!, settings: [:])
@@ -67,6 +68,7 @@ class RecordSoundViewController: UIViewController , AVAudioRecorderDelegate{
     
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
         if flag {
+            try! session.setCategory(AVAudioSessionCategoryPlayback)
             recordedAudio = RecordedAudio()
             recordedAudio.recordingFilePath = recorder.url
             recordedAudio.title = recorder.url.lastPathComponent

@@ -50,6 +50,9 @@ class PlaySoundsController: UIViewController {
         playAudioWithVReverb()
     }
     
+    @IBAction func playEcho(sender: UIButton) {
+        playAudioWithEcho()
+    }
     
     
     
@@ -99,6 +102,28 @@ class PlaySoundsController: UIViewController {
         let format = unitReverb.inputFormatForBus(0)
         audioEngine.connect(audioPlayerNode, to: unitReverb, format: format)
         audioEngine.connect(unitReverb, to: audioEngine.outputNode, format: format)
+        
+        audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
+        try! audioEngine.start()
+        
+        audioPlayerNode.play()
+    }
+    
+    func playAudioWithEcho(){
+        audioPlayer.stop()
+        audioEngine.stop()
+        audioEngine.reset()
+        
+        let audioPlayerNode = AVAudioPlayerNode()
+        audioEngine.attachNode(audioPlayerNode)
+        let echo = AVAudioUnitDistortion()
+        echo.loadFactoryPreset(.MultiEcho1)
+        //audioEngine.attachNode(audioPlayerNode)
+        audioEngine.attachNode(echo)
+        
+        let format = echo.inputFormatForBus(0)
+        audioEngine.connect(audioPlayerNode, to: echo, format: format)
+        audioEngine.connect(echo, to: audioEngine.outputNode, format: format)
         
         audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
         try! audioEngine.start()

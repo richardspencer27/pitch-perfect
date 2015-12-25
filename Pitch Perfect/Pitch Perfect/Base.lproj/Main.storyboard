@@ -104,6 +104,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NU6-qw-1ZO">
                                 <rect key="frame" x="55" y="405" width="80" height="80"/>
                                 <state key="normal" image="echo"/>
+                                <connections>
+                                    <action selector="playEcho:" destination="rW2-UD-54G" eventType="touchUpInside" id="O2d-kY-kRi"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lr6-Ya-v43">
                                 <rect key="frame" x="465" y="410" width="80" height="80"/>
@@ -113,7 +116,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.40722639519999998" green="0.49503656200000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="1a0-ck-aAb" firstAttribute="top" secondItem="uyT-A9-mgq" secondAttribute="bottom" constant="60" id="9fq-4F-eMw"/>
                             <constraint firstItem="lr6-Ya-v43" firstAttribute="top" secondItem="1yv-WV-xfw" secondAttribute="bottom" constant="60" id="D9L-aY-wbH"/>
