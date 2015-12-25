@@ -76,6 +76,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uyT-A9-mgq">
                                 <rect key="frame" x="45" y="89" width="100" height="100"/>
                                 <state key="normal" image="slow2x-iphone"/>
+                                <connections>
+                                    <action selector="PlaySlowAudio:" destination="rW2-UD-54G" eventType="touchUpInside" id="xOg-Z7-scF"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
