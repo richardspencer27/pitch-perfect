@@ -10,6 +10,16 @@ import UIKit
 
 class RecordSoundViewController: UIViewController {
 
+    
+    @IBOutlet weak var recordLabel: UILabel!
+    @IBOutlet weak var recordButton: UIButton!
+    
+    
+    @IBAction func recordAudio(sender: UIButton) {
+        sender.enabled = false
+        recordLabel.text = "Recording"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

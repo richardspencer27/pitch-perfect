@@ -20,6 +20,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Dz-dF-KX1">
                                 <rect key="frame" x="200" y="200" width="200" height="200"/>
                                 <state key="normal" image="microphone"/>
+                                <connections>
+                                    <action selector="recordAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6CW-Ce-6NV"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap the Microphone to Record" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EU7-w9-e0r">
                                 <rect key="frame" x="184.5" y="408" width="231.5" height="20.5"/>
@@ -36,6 +39,10 @@
                             <constraint firstItem="3Dz-dF-KX1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cv6-vd-EL1"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="recordButton" destination="3Dz-dF-KX1" id="fFh-wD-An0"/>
+                        <outlet property="recordLabel" destination="EU7-w9-e0r" id="rxw-YB-bhZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
