@@ -32,10 +32,17 @@ class PlaySoundsController: UIViewController {
         playAudioWithVariableRate(0.5)
     }
     
+    @IBAction func PlayFastAudio(sender: UIButton) {
+        playAudioWithVariableRate(2.0)
+    }
+    
+    
     func playAudioWithVariableRate(rate: Float) {
         audioPlayer.stop()
         audioPlayer.currentTime = 0
         audioPlayer.rate = rate
+        audioPlayer.volume = 1.0
+        audioPlayer.volume = 1.0
         audioPlayer.play()
     }
     //TODO:  In playChipmunkAudio
