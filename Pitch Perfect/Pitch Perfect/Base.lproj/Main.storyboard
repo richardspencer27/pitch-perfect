@@ -25,32 +25,45 @@
                                     <action selector="recordAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6CW-Ce-6NV"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap the Microphone to Record" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EU7-w9-e0r">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap the Microphone to Record" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EU7-w9-e0r">
                                 <rect key="frame" x="184" y="408" width="231.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nqg-ii-VuC">
-                                <rect key="frame" x="250" y="465" width="100" height="100"/>
-                                <state key="normal" image="stop2x-iphone"/>
+                                <rect key="frame" x="335" y="455" width="80" height="80"/>
+                                <state key="normal" image="stop"/>
                                 <connections>
                                     <action selector="stopRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="guC-nJ-1u9"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fg-hr-Qcc">
+                                <rect key="frame" x="184" y="455" width="80" height="80"/>
+                                <state key="normal" image="pauseBlue"/>
+                                <connections>
+                                    <action selector="PauseResumeRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qiy-Jb-2Ub"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.40722639518049886" green="0.4950365619515803" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="EU7-w9-e0r" firstAttribute="top" secondItem="3Dz-dF-KX1" secondAttribute="bottom" constant="8" id="8RA-hc-GwK"/>
+                            <constraint firstItem="nqg-ii-VuC" firstAttribute="trailing" secondItem="EU7-w9-e0r" secondAttribute="trailing" id="JUP-NU-M8O"/>
                             <constraint firstItem="EU7-w9-e0r" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JyE-cc-17o"/>
+                            <constraint firstItem="0fg-hr-Qcc" firstAttribute="top" secondItem="EU7-w9-e0r" secondAttribute="bottom" constant="26.5" id="NmM-Ht-5Uw"/>
                             <constraint firstItem="3Dz-dF-KX1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Pvv-8P-AJY"/>
+                            <constraint firstItem="0fg-hr-Qcc" firstAttribute="leading" secondItem="EU7-w9-e0r" secondAttribute="leading" id="UFp-Mr-MQs"/>
                             <constraint firstItem="3Dz-dF-KX1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cv6-vd-EL1"/>
-                            <constraint firstItem="nqg-ii-VuC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lwo-Us-dWb"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="nqg-ii-VuC" secondAttribute="bottom" constant="35" id="v2g-QR-Y1t"/>
+                            <constraint firstItem="EU7-w9-e0r" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="flQ-NZ-Nya"/>
+                            <constraint firstItem="nqg-ii-VuC" firstAttribute="top" secondItem="EU7-w9-e0r" secondAttribute="bottom" constant="26.5" id="gtA-NC-S2z"/>
+                            <constraint firstItem="nqg-ii-VuC" firstAttribute="leading" secondItem="0fg-hr-Qcc" secondAttribute="trailing" constant="71" id="uIX-wB-CCi"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Record" id="6IJ-FD-kdg"/>
                     <connections>
+                        <outlet property="PauseResumeButton" destination="0fg-hr-Qcc" id="goN-KT-acr"/>
+                        <outlet property="pauseResumeButton" destination="0fg-hr-Qcc" id="57q-sW-j9w"/>
                         <outlet property="recordButton" destination="3Dz-dF-KX1" id="fFh-wD-An0"/>
                         <outlet property="recordLabel" destination="EU7-w9-e0r" id="rxw-YB-bhZ"/>
                         <outlet property="stopButton" destination="nqg-ii-VuC" id="VzF-gl-T3h"/>
@@ -163,8 +176,9 @@
         <image name="echo" width="80" height="80"/>
         <image name="fast2x-iphone" width="100" height="100"/>
         <image name="microphone" width="200" height="200"/>
+        <image name="pauseBlue" width="80" height="80"/>
         <image name="reverb" width="80" height="80"/>
         <image name="slow2x-iphone" width="100" height="100"/>
-        <image name="stop2x-iphone" width="100" height="100"/>
+        <image name="stop" width="80" height="80"/>
     </resources>
 </document>

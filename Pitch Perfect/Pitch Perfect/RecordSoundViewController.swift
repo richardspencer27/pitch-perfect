@@ -10,11 +10,25 @@ import UIKit
 import AVFoundation
 
 class RecordSoundViewController: UIViewController , AVAudioRecorderDelegate{
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        recordButton.enabled = true
+        stopButton.hidden = true
+        pauseResumeButton.hidden = true
+        recordLabel.text = startRecordingStatus
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
 
     //TODO: Find a cool way to control what the label says based on the state microphone enabled
-    @IBOutlet weak var recordLabel: UILabel!
-    @IBOutlet weak var recordButton: UIButton!
-    @IBOutlet weak var stopButton: UIButton!
     
     var audioRecorder:AVAudioRecorder!
     var recordedAudio: RecordedAudio!
@@ -22,9 +36,15 @@ class RecordSoundViewController: UIViewController , AVAudioRecorderDelegate{
     let startRecordingStatus = "Tap the Microphone to Record"
     let recordingStatus = "Recording"
     
+    @IBOutlet weak var recordLabel: UILabel!
+    @IBOutlet weak var recordButton: UIButton!
+    @IBOutlet weak var stopButton: UIButton!
+    @IBOutlet weak var pauseResumeButton: UIButton!
+    
     @IBAction func recordAudio(sender: UIButton) {
         sender.enabled = false
         stopButton.hidden = false
+        pauseResumeButton.hidden = false
         recordLabel.text = recordingStatus
         
         let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
@@ -41,6 +61,7 @@ class RecordSoundViewController: UIViewController , AVAudioRecorderDelegate{
         audioRecorder.meteringEnabled = true
         audioRecorder.prepareToRecord()
         audioRecorder.record()
+        
     }
     
     @IBAction func stopRecording(sender: UIButton) {
@@ -48,22 +69,21 @@ class RecordSoundViewController: UIViewController , AVAudioRecorderDelegate{
         let audioSession = AVAudioSession.sharedInstance()
         try! audioSession.setActive(false)
     }
-
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        recordButton.enabled = true
-        stopButton.hidden = true
-        recordLabel.text = startRecordingStatus
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func PauseResumeRecording(sender: UIButton) {
+        if (audioRecorder.recording) {
+            audioRecorder.pause()
+            
+            if let resumeImage = UIImage(named: "resumeBlue") {
+                pauseResumeButton.setImage(resumeImage, forState: .Normal)
+            }
+            pauseResumeButton.imageView!.image = UIImage(named: "resumeBlue")
+        } else {
+            audioRecorder.record()
+            if let resumeImage = UIImage(named: "pauseBlue") {
+                pauseResumeButton.setImage(resumeImage, forState: .Normal)
+            }
+        }
     }
     
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
