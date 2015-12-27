@@ -54,10 +54,8 @@ class PlaySoundsController: UIViewController {
         playAudioWithEcho()
     }
     
-    
-    
     func playAudioWithVariableRate(rate: Float) {
-        audioPlayer.stop()
+        refreshAudioPlayback()
         audioPlayer.currentTime = 0
         audioPlayer.rate = rate
         audioPlayer.volume = 1.0
@@ -67,10 +65,7 @@ class PlaySoundsController: UIViewController {
     }
 
     func playAudioWithVariablePitch(pitch: Float){
-        audioPlayer.stop()
-        audioEngine.stop()
-        audioEngine.reset()
-        
+        refreshAudioPlayback()
         let audioPlayerNode = AVAudioPlayerNode()
         audioEngine.attachNode(audioPlayerNode)
         
@@ -88,15 +83,11 @@ class PlaySoundsController: UIViewController {
     }
     
     func playAudioWithVReverb(){
-        audioPlayer.stop()
-        audioEngine.stop()
-        audioEngine.reset()
-        
+        refreshAudioPlayback()
         let audioPlayerNode = AVAudioPlayerNode()
-        audioEngine.attachNode(audioPlayerNode)
         let unitReverb = AVAudioUnitReverb()
-        
-        //audioEngine.attachNode(audioPlayerNode)
+        unitReverb.loadFactoryPreset(.SmallRoom)
+        audioEngine.attachNode(audioPlayerNode)
         audioEngine.attachNode(unitReverb)
         
         let format = unitReverb.inputFormatForBus(0)
@@ -110,15 +101,12 @@ class PlaySoundsController: UIViewController {
     }
     
     func playAudioWithEcho(){
-        audioPlayer.stop()
-        audioEngine.stop()
-        audioEngine.reset()
+        refreshAudioPlayback()
         
         let audioPlayerNode = AVAudioPlayerNode()
         audioEngine.attachNode(audioPlayerNode)
         let echo = AVAudioUnitDistortion()
         echo.loadFactoryPreset(.MultiEcho1)
-        //audioEngine.attachNode(audioPlayerNode)
         audioEngine.attachNode(echo)
         
         let format = echo.inputFormatForBus(0)
@@ -129,6 +117,12 @@ class PlaySoundsController: UIViewController {
         try! audioEngine.start()
         
         audioPlayerNode.play()
+    }
+    
+    func refreshAudioPlayback() {
+        audioPlayer.stop()
+        audioEngine.stop()
+        audioEngine.reset()
     }
 
 }

@@ -21,6 +21,10 @@ class RecordSoundViewController: UIViewController , AVAudioRecorderDelegate{
         stopButton.hidden = true
         pauseResumeButton.hidden = true
         recordLabel.text = startRecordingStatus
+        
+        if let resumeImage = UIImage(named: "pauseBlue") {
+            pauseResumeButton.setImage(resumeImage, forState: .Normal)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -34,7 +38,8 @@ class RecordSoundViewController: UIViewController , AVAudioRecorderDelegate{
     var recordedAudio: RecordedAudio!
     let session = AVAudioSession.sharedInstance()
     let startRecordingStatus = "Tap the Microphone to Record"
-    let recordingStatus = "Recording"
+    let recordingStatus = "Recording..."
+    let pausedRecordingStatus = "Paused"
     
     @IBOutlet weak var recordLabel: UILabel!
     @IBOutlet weak var recordButton: UIButton!
@@ -48,11 +53,9 @@ class RecordSoundViewController: UIViewController , AVAudioRecorderDelegate{
         recordLabel.text = recordingStatus
         
         let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
-        
         let fileName = "recordedAudio.wav"
         let pathArray = [dirPath, fileName]
         let filePath = NSURL.fileURLWithPathComponents(pathArray)
-        
         
         try! session.setCategory(AVAudioSessionCategoryPlayAndRecord)
         
@@ -73,13 +76,13 @@ class RecordSoundViewController: UIViewController , AVAudioRecorderDelegate{
     @IBAction func PauseResumeRecording(sender: UIButton) {
         if (audioRecorder.recording) {
             audioRecorder.pause()
-            
+            recordLabel.text = pausedRecordingStatus
             if let resumeImage = UIImage(named: "resumeBlue") {
                 pauseResumeButton.setImage(resumeImage, forState: .Normal)
             }
-            pauseResumeButton.imageView!.image = UIImage(named: "resumeBlue")
         } else {
             audioRecorder.record()
+            recordLabel.text = recordingStatus
             if let resumeImage = UIImage(named: "pauseBlue") {
                 pauseResumeButton.setImage(resumeImage, forState: .Normal)
             }
@@ -89,9 +92,7 @@ class RecordSoundViewController: UIViewController , AVAudioRecorderDelegate{
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
         if flag {
             try! session.setCategory(AVAudioSessionCategoryPlayback)
-            recordedAudio = RecordedAudio()
-            recordedAudio.recordingFilePath = recorder.url
-            recordedAudio.title = recorder.url.lastPathComponent
+            recordedAudio = RecordedAudio(title: recorder.url.lastPathComponent!, recordingFilePath: recorder.url)
             self.performSegueWithIdentifier("showPlaySoundView", sender: recordedAudio)
         } else {
             print("recording failed")
