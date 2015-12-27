@@ -29,11 +29,8 @@ class RecordSoundViewController: UIViewController , AVAudioRecorderDelegate{
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
-    //TODO: Find a cool way to control what the label says based on the state microphone enabled
-    
     var audioRecorder:AVAudioRecorder!
     var recordedAudio: RecordedAudio!
     let session = AVAudioSession.sharedInstance()
